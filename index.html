@@ -36,7 +36,7 @@
       console.log(prices);
       document.getElementById("elementCount").innerText = `POE has ${prices.elementCount} MTX`;
       document.getElementById("totalPoints").innerText = `That cost a total of ${prices.totalPoints} points`;
-      document.getElementById("totalPrice").innerText = `Or $${prices.totalPrice} USD`;
+      document.getElementById("totalPrice").innerText = `Or $${prices.totalPrice.toFixed(2)} USD`;
     })();
   </script>
 </body>
