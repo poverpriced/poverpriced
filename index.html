@@ -23,7 +23,9 @@
 
   </style>
   <div >
-    <h1 style="text-align:center;">POvEverpriced</h1>
+    <h1 style="text-align:center;">
+      <span style="color: #FFDA47;">P</span><span style="color: #FFDA47;">o</span>v<span style="color: #FFDA47;">e</span><span>rpriced</span>
+    </h1>
     <h2 id="elementCount" style="text-align:center;">1</h2>
     <h2 id="totalPoints" style="text-align:center;">2</h2>
     <h2 id="totalPrice" style="text-align:center;">3</h2>
@@ -34,9 +36,9 @@
       const response = await fetch("/poverpriced/prices.json");
       const prices = await response.json();
       console.log(prices);
-      document.getElementById("elementCount").innerText = `POE has ${prices.elementCount} MTX`;
-      document.getElementById("totalPoints").innerText = `That cost a total of ${prices.totalPoints} points`;
-      document.getElementById("totalPrice").innerText = `Or $${prices.totalPrice.toFixed(2)} USD`;
+      document.getElementById("elementCount").innerText = `POE has ${prices.elementCount} items`;
+      document.getElementById("totalPoints").innerText = `That costs a total of ${prices.totalPoints} points`;
+      document.getElementById("totalPrice").innerText = `Or $${prices.totalPrice} USD`;
     })();
   </script>
 </body>
