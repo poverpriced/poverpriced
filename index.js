@@ -1,5 +1,6 @@
 const superagent = require("superagent");
 const fs = require("fs");
+const { log } = require("console");
 
 const baseURL = "https://www.pathofexile.com/shop/category";
 const URLS = [
@@ -68,19 +69,23 @@ let result = { itemCount: 0, totalPoints: 0, totalPrice: 0 };
 
                 for (let i = 0; i < itemNames.length; i++) {
                     const listing = {
-                        "item-name": itemNames[i][1],
+                        itemName: itemNames[i][1],
                         price: itemPrices[i][1],
                     };
                     priceListings.add(listing);
                 }
             })
         );
-        const elementCount = priceListings.size;
-        const totalPoints = Array.from(priceListings)
+        let priceListingsArray = Array.from(priceListings);
+        priceListingsArray.sort((a, b) => b.price - a.price);
+        const fiveMostExpensive = priceListingsArray.slice(0, 5);
+        console.log("Most expensive", fiveMostExpensive);
+        const elementCount = priceListingsArray.length;
+        const totalPoints = priceListingsArray
             .map((x) => parseFloat(x.price))
             .reduce((acc, cur) => acc + cur, 0);
         const totalPrice = totalPoints / 10;
-        result = { elementCount, totalPoints, totalPrice };
+        result = { elementCount, totalPoints, totalPrice, fiveMostExpensive };
         console.log(result);
 
         const outputFile = "prices.json";
