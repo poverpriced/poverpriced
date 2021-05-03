@@ -1,4 +1,5 @@
 const superagent = require("superagent");
+const fs = require("fs");
 
 const baseURL = "https://www.pathofexile.com/shop/category";
 const URLS = [
@@ -81,9 +82,22 @@ let result = { itemCount: 0, totalPoints: 0, totalPrice: 0 };
         const totalPrice = totalPoints / 10;
         result = { elementCount, totalPoints, totalPrice };
         console.log(result);
+
+        const outputFile = "prices.json";
+        fs.readFile(outputFile, "utf8", function (err, data) {
+            if (err) {
+                return console.log(err);
+            }
+            fs.writeFile(
+                outputFile,
+                JSON.stringify(result),
+                "utf8",
+                function (err) {
+                    if (err) return console.log(err);
+                }
+            );
+        });
     } catch (err) {
         console.error("ERR:", err);
     }
 })();
-
-return result;
