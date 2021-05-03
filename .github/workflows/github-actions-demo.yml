@@ -4,11 +4,16 @@ on:
     - cron:  '0 0 * * *'
    workflow_dispatch:
 jobs:
-  Explore-GitHub-Actions:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [15.x]
     steps:
-      - run: cd ..
-      - run: npm install
-      - run: ls
-      - run: node index.js
-      - run: echo "test"
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm run start
