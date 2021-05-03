@@ -79,7 +79,6 @@ let result = { itemCount: 0, totalPoints: 0, totalPrice: 0 };
         let priceListingsArray = Array.from(priceListings);
         priceListingsArray.sort((a, b) => b.price - a.price);
         const fiveMostExpensive = priceListingsArray.slice(0, 5);
-        console.log("Most expensive", fiveMostExpensive);
         const elementCount = priceListingsArray.length;
         const totalPoints = priceListingsArray
             .map((x) => parseFloat(x.price))
