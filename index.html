@@ -7,6 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-  <h1>Test</h1>
+  <style>
+    @font-face {
+      font-family: "Fontin";
+      src: url(https://web.poecdn.com/font/fontin-regular-webfont.woff) format("truetype");
+    }
+
+    h1, p, div {
+      font-family: Fontin;
+    }
+  </style>
+  <div>
+    <h1 style="text-align:center;">POvEverpriced</h1>
+  </div>
+  <script async>
+    const prices = await fetch("/prices.json").then(x => x.json());
+    console.log(prices);
+  </script>
 </body>
 </html>
