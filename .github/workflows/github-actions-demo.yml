@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Fetch POE Store
 on: 
    schedule:
     - cron:  '0 0 * * *'
