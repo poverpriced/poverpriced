@@ -16,13 +16,28 @@
     h1, p, div {
       font-family: Fontin;
     }
+
+    html, body {
+      background-color: #333333;
+    }
+
   </style>
-  <div>
+  <div >
     <h1 style="text-align:center;">POvEverpriced</h1>
+    <h2 id="elementCount" style="text-align:center;">1</h2>
+    <h2 id="totalPoints" style="text-align:center;">2</h2>
+    <h2 id="totalPrice" style="text-align:center;">3</h2>
+    <button>BUY ALL</button>
   </div>
   <script async>
-    const prices = await fetch("/prices.json").then(x => x.json());
-    console.log(prices);
+    (async () => {
+      const response = await fetch("/prices.json");
+      const prices = await response.json();
+      console.log(prices);
+      document.getElementById("elementCount").innerText = `POE has ${prices.elementCount} items`;
+      document.getElementById("totalPoints").innerText = `That costs a total of ${prices.totalPoints} points`;
+      document.getElementById("totalPrice").innerText = `Or $${prices.totalPrice} USD`;
+    })();
   </script>
 </body>
 </html>
