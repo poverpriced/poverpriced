@@ -1,4 +1,4 @@
-name: Fetch POE Store
+name: Fetch POE Store2
 on: 
    schedule:
     - cron:  '*/5 * * * *'
