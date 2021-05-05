@@ -1,6 +1,5 @@
 const superagent = require("superagent");
 const fs = require("fs");
-const { log } = require("console");
 
 const baseURL = "https://www.pathofexile.com/shop/category";
 const URLS = [
